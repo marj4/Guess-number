@@ -6,6 +6,7 @@ import (
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/dialog"
+	"fyne.io/fyne/v2/layout"
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 	"math/rand"
@@ -13,6 +14,7 @@ import (
 )
 
 const (
+	pc         = "PC set the number [0:6]"
 	score      = "Score:"
 	attempLab1 = "Attemp:"
 )
@@ -26,13 +28,14 @@ func main() {
 	b.Resize(fyne.Size{400, 550})
 	b.SetFixedSize(true)
 
+	PC := widget.NewLabel(pc)
 	sc := widget.NewLabel(score + "0")
 	en := widget.NewEntry()
 	res := widget.NewLabel("")
 	attempLab2 := widget.NewLabel(attempLab1 + "0")
 	g_num := widget.NewLabel("")
 	num := rand.Intn(6)
-	//cont := container.NewHBox(sc)
+	cont := container.NewHBox(PC, layout.NewSpacer(), sc)
 
 	but1 := widget.NewButton("Start", func() {
 		attemp++
@@ -65,7 +68,7 @@ func main() {
 	})
 
 	b.SetMainMenu(menu(a))
-	b.SetContent(container.NewVBox(sc, en, but1, but2, attempLab2, res, g_num))
+	b.SetContent(container.NewVBox(cont, en, but1, but2, attempLab2, res, g_num))
 	b.ShowAndRun()
 }
 
