@@ -26,12 +26,13 @@ func main() {
 	b.Resize(fyne.Size{400, 550})
 	b.SetFixedSize(true)
 
-	sc := widget.NewLabel(score)
+	sc := widget.NewLabel(score + "0")
 	en := widget.NewEntry()
 	res := widget.NewLabel("")
 	attempLab2 := widget.NewLabel(attempLab1 + "0")
 	g_num := widget.NewLabel("")
 	num := rand.Intn(6)
+	//cont := container.NewHBox(sc)
 
 	but1 := widget.NewButton("Start", func() {
 		attemp++
@@ -46,7 +47,7 @@ func main() {
 		if str == num {
 			res.SetText("Success!!!")
 			scor++
-			print(scor)
+			sc.SetText(score + strconv.Itoa(scor))
 			attemp = 0
 			num2 := rand.Intn(6)
 			num = num2
