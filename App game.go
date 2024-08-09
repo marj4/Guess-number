@@ -55,10 +55,22 @@ func main() {
 			num2 := rand.Intn(6)
 			num = num2
 			attempLab2.SetText(attempLab1 + strconv.Itoa(attemp))
+			switch scor {
+			case 1:
+				dialog.ShowCustom(
+					"Achievements", "Okay", widget.NewLabel("You have reached the bronze level"), b)
+			case 3:
+				dialog.ShowCustom(
+					"Achievements", "Okay", widget.NewLabel("You have reached the silver level"), b)
+			case 5:
+				dialog.ShowCustom(
+					"Achievements", "Okay", widget.NewLabel("You have reached the gold level"), b)
+			}
 
 		} else {
 			res.SetText("No")
 		}
+
 	})
 	but2 := widget.NewButton("Restart", func() {
 		attemp = 0
